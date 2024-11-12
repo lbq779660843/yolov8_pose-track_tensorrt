@@ -7,25 +7,21 @@ This project integrates YOLOv8 (Object detection and pose estimation)and ByteTra
   <img src="assets/demo.gif" width="360px" />
 </p>
 
-## Usage
-
-
-- CPP(TensorRT):
-1.Clone [yolov8](https://github.com/ultralytics/ultralytics/tree/v8.2.103) and download [yolov8s-pose.pt](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8s-pose.pt)
-2.Export onnx model
+## Usage CPP(TensorRT):
+- 1.Clone [yolov8](https://github.com/ultralytics/ultralytics/tree/v8.2.103) and download [yolov8s-pose.pt](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8s-pose.pt)
+- 2.Export onnx model
 ``` python
 from ultralytics import YOLO
 # Load a model
 model = YOLO("yolov8s-pose.pt")  # load an official model
 # Export the model
 model.export(format="onnx")
-``` 
-3.Convert model to trt
+```
+- 3.Convert model to trt
 ``` shell
 trtexec.exe --onnx=yolov8s-pose.onnx --saveEngine=yolov8s-pose.engine
 ```
-
-4.Inference
+- 4.Inference
 ``` shell
 cd build/release
 yolov8-pose-bytetrack-trt.exe yolov8s-pose.engine test.mp4 # the video path
